@@ -42,7 +42,8 @@
 
             ourURL = window.location.href;
             // console.log("ourURL = " + ourURL);
-            chop = 0;
+            chop = 7;
+            /* 
             if (ourURL.startsWith("http://")) {
                 chop = 7;
             } else if (ourURL.startsWith("https://")) {
@@ -67,8 +68,11 @@
                     // console.log("Could not determine hostname from window.location.href");
                     document.getElementById('error').innerHTML = "<font color=\"red\">!! NO HOST !!</font>";
                 }
-            }
+            } */
 
+            // this is the hacky way to do it fast without having to parse the URL to get the hostname
+            url = 'ws://localhost:8080';
+            wsConnect(url);
             pwmMouseDown = false;
         }
 
@@ -89,7 +93,7 @@
         function onOpen(evt) {
 
             // Log connection state
-            // console.log("Connected");
+            console.log("Connected");
 
             // // Get the current state of ??
             // doSend("get??State");
@@ -109,7 +113,7 @@
         function onMessage(evt) {
 
             // Print out our received message
-            // console.log("Received: " + evt.data);
+            console.log("Received: " + evt.data);
             let obj = JSON.parse(evt.data);
 
             if ('manualMode' in obj) {
@@ -150,8 +154,12 @@
 
         // Sends a message to the server (and prints it to the console)
         function doSend(message) {
-            // console.log("Sending: " + message);
-            websocket.send(message);
+            //console.log("Sending: " + message);
+            //websocket.send(message);
+            var websocket = new WebSocket('ws://localhost:8080');
+            websocket.onopen = function (evt) { websocket.send(message) }
+            websocket.onmessage = function (evt) { onMessage(evt) };
+
         }
 
         function onManualOverrideSwitch() {
@@ -163,7 +171,7 @@
 
         function onFanSwitch() {
             newValue = document.getElementById('fanOn').checked;
-            // console.log("newFanOn = " + newValue);
+            console.log("newFanOn = " + newValue);
             doSend("{ \"fanOn\": " + newValue + " }");
         }
 
@@ -199,7 +207,6 @@
             }
         }
 
-        window.addEventListener("load", init, false);
     </script>
 
 
