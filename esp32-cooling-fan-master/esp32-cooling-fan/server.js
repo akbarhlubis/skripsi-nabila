@@ -11,6 +11,8 @@ wss.on('connection', ws => {
         ws.send(JSON.stringify({ tempC: Math.floor(Math.random() * 100) }));
         // send a humidity value to the client called humidity
         ws.send(JSON.stringify({ humidity: Math.floor(Math.random() * 100) }));
+        // send a fanOn 0 or 1 value to the client called fan 
+        ws.send(JSON.stringify({ fanOn: Math.floor(Math.random() * 2) }));
     });
 
     ws.send('WebSocket server connected');

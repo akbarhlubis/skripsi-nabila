@@ -175,6 +175,11 @@
             doSend("{ \"fanOn\": " + newValue + " }");
         }
 
+        function onTestingSwitch() {
+            newValue = document.getElementById('testingOn').checked;
+            console.log("newTestingOn = " + newValue);
+            doSend("{ \"testingOn\": " + newValue + " }");
+        }
         function onPwmChange() {
             newValue = document.getElementById('pwmSlide').value;
             // console.log("newPwmPct = " + newValue);
@@ -214,7 +219,7 @@
 
 <body>
     <div id="content">
-        <h1>HONEY DEHUMIDIFICATION CONTROL</h1>
+        <h1 style="margin-top: 20px;">TESTING KIRIM DATA DARI SERVER WEBSOCKET</h1>
 
         <div class="fanSection">
             <div class="leftSide">
@@ -240,19 +245,6 @@
         </div>
 
         <div class="controlSection">
-            <div class="controlMode">
-                <div class="labeledControl">
-                    <p>Manual Override</p>
-                    <div class="manualOverrideSwitch">
-                        <label class="switch">
-                            <input id="manualOverride" type="checkbox" onchange="onManualOverrideSwitch()"
-                                oninput="onManualOverrideSwitch()">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
             <div hidden="true" class="manualControls">
                 <div class="labeledControl">
                     <p>Power</p>
@@ -263,26 +255,16 @@
                         </label>
                     </div>
                 </div>
-                <div class="labeledControl">
-                    <p>Speed</p>
-                    <div class="trackContainer"><input id="pwmSlide" class="track" type="range" min="0" max="100"
-                            value="50" onchange="onPwmChange()" oninput="onPwmChange()" onmousedown="onPwmMouseDown()"
-                            onmouseup="onPwmMouseUp()" ontouchstart="onPwmMouseDown()" ontouchend="onPwmMouseUp()">
-                    </div>
-                    <p><span class="value" id="pwmPctText">50</span><span class="units">%</span></p>
+                <div style="display: flex;flex-direction: column;align-items: center;">
+                    <p>Tombol untuk Testing</p>
+                    <label class="switch">
+                        <input id="testingOn" type="checkbox" onchange="onFanSwitch()" oninput="onFanSwitch()">
+                        <span class="slider round"></span>
+                    </label>
                 </div>
             </div>
-
-            
         </div>
-
     </div>
-
-    <div class="linksCenter">
-        <a class="linkButton" href="fwupdate.html">Confirm</a>
-    </div>
-
-    <div id="error" class="linksCenter"></div>
 </body>
 
 </html>
