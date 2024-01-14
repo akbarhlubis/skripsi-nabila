@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 /* Untuk debugging atau melihat struktur layout html */
 /* * {
     outline: red solid 1px;
@@ -6,10 +6,12 @@
 
 html {
     background: #fcc100;
-    color: rgb(0, 0, 0);
-    font-family: Solway, serif;
+    color: #263238;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: calc(16px + .2vmin);
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
@@ -18,14 +20,12 @@ body {
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 h1 {
-    font-family: Dosis, sans-serif;
-    font-weight: 400;
-    font-size: 2.5em;
-    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.5em;
     text-align: center;
 }
 
@@ -33,11 +33,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-}
-
-.fanRPM {
-    order: 1;
+    justify-content: space-around;
 }
 
 .leftSide {
@@ -46,6 +42,7 @@ h1 {
     justify-content: space-between;
     width: 100%;
     order: 2;
+    outline: red solid 1px;
 }
 
 @media (min-width: 768px) {
@@ -58,6 +55,9 @@ h1 {
     .leftSide {
         order: 1;
     }
+    h1{
+        font-size: 2em;
+    }
 }
 
 .labeledControl {
@@ -69,7 +69,10 @@ h1 {
 }
 
 .pwrSwitch {
-    padding-left: 1em;
+    gap: 10px;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
 }
 
 .slashed {
@@ -87,8 +90,8 @@ h1 {
 
 .value {
     font-family: Dosis, sans-serif;
+    font-weight: bold;
     font-size: 1.5em;
-    color: rgb(0, 0, 0);
 }
 
 .units {
@@ -219,7 +222,6 @@ input:checked+.slider:before {
 
 .linkButton {
     background-color: rgb(12, 226, 40);
-    color: rgb(0, 0, 0);
     border-radius: .25rem;
     padding: .25em .5em;
     text-decoration: none;

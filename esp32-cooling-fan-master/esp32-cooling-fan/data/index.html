@@ -11,9 +11,7 @@
         href="https://fonts.googleapis.com/css?family=Dosis:300,500,700|Solway:300,700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <script language="javascript" src="dash-meter.js"></script>
 
@@ -171,7 +169,7 @@
                 <div class="labeledControl">
                     <div class="thermometer">
                         <!-- Ukuran icon termometer -->
-                        <i class="fas fa-thermometer-half fa-6x"></i></p> 
+                        <i style="font-size: 7rem;" class="bi bi-thermometer-half"></i>
                         <div class="slashed">
                             <div><span class="value" id="tempC">20</span><span class="units">&deg;C</span></div>
                         </div>
@@ -184,7 +182,7 @@
                             <div><span class="value text-humidity" id="humidity">16</span><span class="units">%</span></div>
                         </div>
                         <!-- ukuran icon -->
-                        <i class="fas fa-tint large-icon fa-6x"></i>
+                        <i style="font-size: 7rem;" class="bi bi-droplet-fill"></i>
                     </div>
                 </div>
             </div>
@@ -193,22 +191,19 @@
         <div class="controlSection" style="margin-top: 80px;">
             <div hidden="true" class="manualControls">
                 <div class="labeledControl" style="display: flex; align-items: center; flex-direction: column;">
+                    <p>Tombol Power</p>
                     <div class="pwrSwitch">
-                        <p>Power</p>
+                        <span>Off</span>
                         <label class="switch">
                             <input id="fanOn" type="checkbox" onchange="onFanSwitch()" oninput="onFanSwitch()">
                             <span class="slider round"></span>
                         </label>
+                        <span>On</span>
                     </div>
                 </div>
-                
             </div>
-
-            
         </div>
-
     </div>
-
 </body>
 
 </html>
